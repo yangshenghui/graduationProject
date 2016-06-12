@@ -1,0 +1,207 @@
+@CHARSET "UTF-8";
+
+.btn.size-XXL {
+	padding: 10px 180px;
+	font-size: 18px;
+	height: 48px;
+	border-radius: 6px;
+}
+
+body head {
+	background-color: #426374;
+}
+
+body .page-register {
+	height: 100%;
+	padding: 20px 20%;
+	padding-top: 60px;
+	background-color: #f8f8f;
+}
+
+.page-register input {
+	border-radius: 8px;
+	font-size: 16px;
+	height: 45px;
+}
+
+.page-register .page-register-form label {
+	margin-top: 12px;
+}
+
+.page-register .page-register-title {
+	width: 200px;
+	margin: 25px auto;
+	font-size: 26px;
+	font-family: 微软雅黑;
+}
+
+.page-register-form {
+	background-color: #fff;
+	margin-top: 56px;
+	padding-top: 9px;
+	margin-bottom: 34px;
+	padding-bottom: 55px;
+}
+
+.header {
+	font-size: 25px;
+	line-height: 50px;
+	color: #fff;
+}
+
+.wellcome {
+	width: 50%;
+	margin: auto;
+	font-size: 35px;
+	margin-top: 7%;
+}
+
+.register {
+	padding-left: 10px;
+}
+
+/* 注册流程 */
+.container-custom {
+	width: 960px;
+	margin: auto;
+	margin-top: 100px;
+	padding: 40px 0 0;
+	border: 1px solid #f0f0f0;
+	border-top: 0;
+	background: #fff;
+}
+
+.register-progress {
+	padding-left: 15px
+}
+
+.register-progress .pross {
+	position: relative;
+	background: #ddd;
+	float: left;
+	width: 300px;
+	height: 35px;
+	line-height: 35px;
+	color: #666;
+	font-size: 14px;
+	padding-left: 10px;
+	overflow: hidden;
+}
+
+.register-progress .pross .index {
+	background: #999;
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	line-height: 18px;
+	-webkit-border-radius: 18px;
+	-moz-border-radius: 18px;
+	border-radius: 18px;
+	color: #fff;
+	text-align: center;
+	margin-right: 10px;
+}
+
+.register-progress .pross .pross-dir {
+	background: #ddd;
+	position: absolute;
+	top: -17px;
+	right: -19px;
+}
+
+.register-progress .pross .pross-dir .outside, .register-progress .pross .pross-dir .inside
+	{
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 35px 19px;
+}
+
+.register-progress .pross .pross-dir .outside {
+	border-color: transparent transparent transparent #f8f8f8;
+}
+
+.register-progress .pross .pross-dir .inside {
+	border-color: transparent transparent transparent #ddd;
+	margin-left: -47px;
+}
+
+.register-progress .pross-ok {
+	background: #426374;
+	color: #fff;
+}
+
+.register-progress .pross-ok .index {
+	background: #fff;
+	color: #426374;
+}
+
+.register-progress .pross-ok .pross-dir {
+	background: #ddd;
+}
+
+.register-progress .pross-ok .pross-dir .outside {
+	border-color: transparent transparent transparent #f8f8f8;
+}
+
+.register-progress .pross-ok .pross-dir .inside {
+	border-color: transparent transparent transparent #426374;
+}
+
+.register-progress .pross-ok .pross-dir-bg {
+	background: #426374;
+}
+
+.register-info {
+	background: #fff;
+	padding: 0 0 59px 0;
+	overflow: hidden;
+}
+
+.user-info {
+	text-align: center;
+	font-size: 1.333em;
+	padding-top: 70px;
+	width: 623px;
+	margin: auto;
+}
+
+.user-info ul li {
+	margin-bottom: 50px;
+}
+
+.prompt-answer {
+	padding-left: 97px;
+	display: none;
+	padding-right: 160px;
+}
+
+.prompt-answer .alert-answer {
+	display: block;
+	width: auto;
+	font-size: 0.75em;
+	text-align: left;
+	margin-top: 5px;
+}
+
+.alert-danger {
+	height: 26px;
+	line-height: 26px;
+	padding: 0 0 0 5px;
+	border-radius: 0;
+	color: #b94a48;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+
+.alert-danger strong {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	background-image: url("../images/bg_icons.png");
+	background-repeat: no-repeat;
+	background-position: 0 -64px;
+	margin-right: 5px;
+	vertical-align: text-bottom;
+}

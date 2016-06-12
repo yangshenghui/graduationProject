@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.usst.dissertation.sql.menu.dao.MenuDao">
+	
+	<select id="getMenus" resultType="com.usst.dissertation.sql.menu.entity.Menu" parameterType="com.usst.dissertation.sql.menu.entity.Menu">
+		select * from usst_menu m
+		left join usst_user_role r on m.roleId = r.id
+		<where>
+			m.enabled='1' and m.roleId = #{roleId}
+			<if test="level != null and parentId != null">
+				 and (level=#{level} and parentId=#{parentId} )
+			</if>
+			<if test="level != null">
+				 and level=#{level}
+			</if>
+		</where>
+		order by m.order 	
+	</select>
+	
+</mapper>

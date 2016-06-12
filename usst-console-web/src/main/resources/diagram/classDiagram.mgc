@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class name="com.usst.dissertation.filter.CommonInterceptor" x="105" y="114">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class
+        name="com.usst.dissertation.controller.author.AuthorController"
+        x="115" y="316">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.usst.dissertation.user.service.IUserService"
+            endpointName="userService" kind="Simple"/>
+        <Communication destinationClassName="com.usst.dissertation.user.service.IUserService"/>
+    </Class>
+    <Class
+        name="com.usst.dissertation.controller.auditor.AuditorController"
+        x="722" y="109">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.usst.dissertation.user.service.IUserService"
+            endpointName="userService" kind="Simple"/>
+        <Communication destinationClassName="com.usst.dissertation.user.service.IUserService"/>
+    </Class>
+    <Class name="com.usst.dissertation.sql.user.dao.UserDao" x="115" y="690">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.usst.dissertation.sql.user.entity.User" x="82" y="846">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.usst.dissertation.user.service.IUserService"
+        x="315" y="570">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class
+        name="com.usst.dissertation.controller.manager.managerController"
+        x="361" y="921">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.usst.dissertation.user.service.IUserService"
+            endpointName="userService" kind="Simple"/>
+        <Communication destinationClassName="com.usst.dissertation.sql.user.entity.User"/>
+        <Communication destinationClassName="com.usst.dissertation.user.service.IUserService"/>
+    </Class>
+    <Class name="com.usst.dissertation.user.service.imp.UserServiceImp"
+        x="50" y="564">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.usst.dissertation.user.service.IUserService"/>
+        <Association
+            destinationClassName="com.usst.dissertation.sql.user.dao.UserDao"
+            endpointName="userDao" kind="Simple"/>
+        <Communication destinationClassName="com.usst.dissertation.sql.user.dao.UserDao"/>
+    </Class>
+    <Class
+        name="com.usst.dissertation.controller.common.CommonController"
+        x="737" y="346">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.usst.dissertation.user.service.IUserService"
+            endpointName="userService" kind="Simple"/>
+        <Communication destinationClassName="com.usst.dissertation.sql.user.entity.User"/>
+        <Communication destinationClassName="com.usst.dissertation.user.service.IUserService"/>
+    </Class>
+</ClassDiagram>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.usst.dissertation.sql.user.dao.UserDao">
+	<insert id="insertUser" parameterType="com.usst.dissertation.sql.user.entity.User">
+		insert into usst_user (id,roleId,userName,userPsw,sex,realName,mobile,email,address,resDirection,company,enabled, createOn, createBy, lstUpdateOn, lstUpdateBy)
+		 values (#{id},#{roleId},#{userName},#{userPsw},#{sex},#{realName},#{mobile},#{email},#{address},#{resDirection},#{company},#{enabled},#{createOn},#{createBy},#{lstUpdateOn},#{lstUpdateBy})
+	</insert>
+	
+	<update id="updateUser" parameterType="com.usst.dissertation.sql.user.entity.User">
+		update usst_user 
+		set id=#{id},roleId=#{roleId},userName=#{userName},
+		userPsw=#{userPsw},sex=#{sex},realName=#{realName},
+		mobile=#{mobile},email=#{email},address=#{address},resDirection=#{resDirection},
+		company=#{company},enabled=#{enabled},createOn=#{createOn},
+		createBy=#{createBy},lstUpdateOn=#{lstUpdateOn},lstUpdateBy=#{lstUpdateBy}
+		<where> 
+			id=#{id}
+		</where> 
+	</update>
+	
+	<select id="getUsers" resultType="com.usst.dissertation.sql.user.entity.User" parameterType="com.usst.dissertation.sql.user.entity.User">
+		select * from usst_user u
+	 	<where>
+	 		u.enabled='1'
+	 		<if test="roleId != null">
+	 			and u.roleId=#{roleId}
+	 		</if>
+	 		<if test="userName != null">
+			    and u.userName=#{userName} 
+			</if>
+			<if test="email != null">
+			    and u.email=#{email} 
+			</if>
+			<if test="userPsw != null">
+			   	and u.userPsw=#{userPsw}
+			</if>
+	    </where>
+	</select>
+	<select id="getAllUsers" resultType="com.usst.dissertation.sql.user.entity.User" parameterType="com.usst.dissertation.sql.user.entity.User">
+		select * from usst_user u
+	 	<where>
+	 		(u.enabled='1' or u.enabled='0')
+	 		<if test="roleId != null">
+	 			and u.roleId=#{roleId}
+	 		</if>
+	    </where>
+	</select>
+	<select id="getUsersByFuzzySearch" resultType="com.usst.dissertation.sql.user.entity.User" parameterType="java.lang.String">
+		select * from usst_user u
+	 	<where>
+	 		u.enabled='1'
+	 		<if test="str != null">
+	 			and (u.email like "%"#{str}"%" or u.realName like "%"#{str}"%" or u.userName like "%"#{str}"%")
+	 		</if>	 		
+	    </where>
+	</select>
+
+	<select id="getUserById" resultType="com.usst.dissertation.sql.user.entity.User" parameterType="java.lang.String">
+		select * from usst_user u
+	 	<where>
+	    	(u.enabled='1' or u.enabled='0') and  u.id=#{0}
+	    </where>
+	</select>
+	
+	<delete id="deleteUserById" parameterType="java.lang.String">
+		delete from usst_user
+	 	<where>
+	    	id=#{id}
+	    </where>
+	</delete>
+	
+</mapper>

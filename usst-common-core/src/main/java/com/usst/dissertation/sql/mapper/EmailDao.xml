@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.usst.dissertation.sql.email.dao.EmailDao">
+	<select id="getEmails" resultType="java.util.HashMap" parameterType="com.usst.dissertation.sql.email.entity.Email">
+		select * from usst_user_email e
+		<if test="sender != null">
+		 	left join usst_user u on e.receiver = u.email		
+	 	</if>
+	 	<if test="receiver != null"> 			
+ 			left join usst_user u on e.sender = u.email	
+		</if>	
+	 	<where>
+	 		and e.enabled = "1" and e.userId = #{userId}
+	 		<if test="sender != null">	 			
+	 			and e.sender = #{sender}
+	 		</if>
+	 		<if test="receiver != null">
+	 			and e.receiver = #{receiver}
+	 		</if>	 		
+	    </where>
+	</select>
+	
+	<select id="getDeletedEmailsByUserId" resultType="java.util.HashMap" parameterType="java.lang.String">
+		select e.id,e.sender,e.receiver,e.title,e.content,e.createOn,u1.realName as senderName,
+		u2.realName as receiverName,u1.email as senderEmail,u2.email as receiverEmail
+		 from usst_user_email e
+		 left join usst_user as u1 on e.sender = u1.email
+		 left join usst_user as u2 on e.receiver = u2.email		
+	 	<where>
+	 		and e.enabled = "0" and e.userId = #{userId}
+	    </where>
+	</select>
+		
+	<update id="deleteEmail" parameterType="java.lang.String">
+		update usst_user_email e
+		set enabled = '0'
+		<where>
+	 		e.id=#{emailId}
+	    </where>
+	</update>
+	
+	<update id="clearAll" parameterType="java.lang.String">
+		update usst_user_email e
+		set e.enabled = '2'
+		<where>
+	 		e.enabled = "0" and e.userId = #{userId}
+	    </where>
+	</update>
+	
+	<insert id="sendEmail" parameterType="com.usst.dissertation.sql.email.entity.Email">
+		insert into usst_user_email (id,userId,sender,receiver,title,content,enabled, createOn, createBy, lstUpdateOn, lstUpdateBy)
+		values (#{id},#{userId},#{sender},#{receiver},#{title},#{content},#{enabled},#{createOn},#{createBy},#{lstUpdateOn},#{lstUpdateBy})
+	</insert>
+	
+</mapper>

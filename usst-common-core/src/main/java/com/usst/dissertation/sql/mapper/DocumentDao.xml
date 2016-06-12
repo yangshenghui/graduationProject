@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.usst.dissertation.sql.document.dao.DocumentDao">
+
+	<select id="getDocumentTypes" resultType="com.usst.dissertation.sql.document.entity.DocumentType" parameterType="com.usst.dissertation.sql.document.entity.DocumentType">
+		select * from usst_document_type dt
+		<where>
+			dt.enabled='1'
+		</where>
+		order by dt.order 	
+	</select>
+	
+	<insert id="saveArticle" parameterType="com.usst.dissertation.sql.document.entity.Document">
+		insert into usst_document (id,userId,articleAuthor,articleTitle,articleType,articleKey,articleDigest,articleContent,isDrafts,articleStatus,auditorId,auditorOpinion,isAudit,enabled, createOn, createBy, lstUpdateOn, lstUpdateBy)
+		values (#{id},#{userId},#{articleAuthor},#{articleTitle},#{articleType},#{articleKey},#{articleDigest},#{articleContent},#{isDrafts},#{articleStatus},#{auditorId},#{auditorOpinion},#{isAudit},#{enabled},#{createOn},#{createBy},#{lstUpdateOn},#{lstUpdateBy})
+	</insert>
+	
+	<select id="getDocuments" resultType="java.util.HashMap" parameterType="com.usst.dissertation.sql.document.entity.Document">
+		select * from usst_document d
+		left join usst_document_type dt on d.articleType = dt.id
+		left join usst_user u on d.userId = u.id
+	 	<where>
+	 		d.enabled='1' 
+	 		<if test="isAudit != null">
+	 			and d.isAudit =#{isAudit}
+	 		</if>
+	 		<if test="isDrafts != null">
+	 			and d.isDrafts =#{isDrafts}
+	 		</if>
+	 		<if test="userId != null">
+	 			and d.userId=#{userId} 
+	 		</if>
+	 		<if test="articleStatus != null">
+	 			and d.articleStatus =#{articleStatus}
+	 		</if>	 
+	 		<if test="auditorId != null">
+	 			and d.auditorId =#{auditorId}
+	 		</if>		 
+	    </where>
+	    order by d.lstUpdateOn
+	</select>
+	
+	<select id="getDocument" resultType="com.usst.dissertation.sql.document.entity.Document" parameterType="java.lang.String">
+		select * from usst_document d
+		left join usst_document_type dt on d.articleType = dt.id
+	 	<where>
+	 		d.id=#{documentId}
+	    </where>
+	</select>
+	
+	<select id="getDocumentById" resultType="java.util.HashMap" parameterType="java.lang.String">
+		select * from usst_document d
+		left join usst_document_type dt on d.articleType = dt.id
+	 	<where>
+	 		d.id=#{documentId}
+	    </where>
+	</select>
+	
+	<update id="updateDocument" parameterType="com.usst.dissertation.sql.document.entity.Document">
+	 	update usst_document d
+	 	set userId=#{userId},articleAuthor=#{articleAuthor},articleTitle=#{articleTitle},articleType=#{articleType},
+	 	articleKey=#{articleKey},articleDigest=#{articleDigest},articleContent=#{articleContent},isDrafts=#{isDrafts},
+	 	articleStatus=#{articleStatus},auditorId=#{auditorId},auditorOpinion=#{auditorOpinion},
+	 	isAudit=#{isAudit},enabled=#{enabled},createOn=#{createOn},createBy=#{createBy},lstUpdateOn=#{lstUpdateOn},
+	 	lstUpdateBy=#{lstUpdateBy}
+	 	<where>
+	 		d.id=#{id}
+	    </where>
+	</update>
+	
+	<update id="delete" parameterType="java.lang.String">
+		update usst_document d
+		set enabled = '0'
+		<where>
+	 		d.id=#{id}
+	    </where>
+	</update>
+
+</mapper>
