@@ -10,6 +10,6 @@ Online journal articles contribute management system
 #####（4）安装 Eclipse 8.5
 #####（5）安装服务器 Tomcat7.0或以上版本
 #####在使用该系统前，请先将数据库 periodicalonline 附加到 MYSQL5.0 中，并确定数据库服务器正在运行。将系统导入 Eclipse 8.5中，
-配置好Tomcat（将usst-console-web部署在tomcat），启动Tomcat。打开浏览器,在地址栏中输入“http://localhost:8080/console-web/login.htm”，
+#####配置好Tomcat（将usst-console-web部署在tomcat），启动Tomcat。打开浏览器,在地址栏中输入“http://localhost:8080/console-web/login.htm”，
 进入到系统登录页面中。
 #####进入到 登录界面后，若没有账号时，作者可以在线注册审核员由管理创建，管理员的默认账号为“  admin”，密码“111111”。 进入系统后就可以行各种操作了”。 
